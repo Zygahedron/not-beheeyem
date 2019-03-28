@@ -143,3 +143,7 @@ function checkItalics(msg) { // Function to be fired if a message is valid for i
         }
     }
 }
+
+process.on("beforeExit", ()=>{
+    notbeheeyem.destroy();
+});
