@@ -81,7 +81,11 @@ notbeheeyem.on("message", msg => { // Fires when a message is sent that can be d
             msg.react(notbeheeyem.emojis.get('328348788202799109'))
                 .catch(console.error)
         } else { // If a command was fired, do not check for italics in the messsage.
-            checkItalics(msg);
+            try {
+                checkItalics(msg);
+            } catch (e) {
+                console.log(e);
+            }
         }
     }
 });
