@@ -78,23 +78,22 @@ notbeheeyem.on("message", msg => { // Fires when a message is sent that can be d
                         });
                 }
             }
-        } else*/ if (msg.content == notbeheeyem.user) {
+        } else if (msg.content == notbeheeyem.user) {
             msg.react(notbeheeyem.emojis.get('560835223093510146'))
                 .catch(console.error)
-        } else { // If a command was fired, do not check for italics in the messsage.
+        } else { // If a command was fired, do not check for italics in the messsage.*/
             try {
                 checkItalics(msg);
             } catch (e) {
                 console.log(e);
             }
-        }
+        //}
     }
 });
 
 
 notbeheeyem.login(process.env.TOKEN);
-var emote = notbeheeyem.emojis.get('560835223093510146');
-console.log(notbeheeyem.emojis.array());
+
 function capitalizeFirstLetter(string) { // Simple function to capitalize the first letter in a string.
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
