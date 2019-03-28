@@ -2,7 +2,7 @@ const Discord = require("discord.js"), // Require Node modules and initialize Di
     notbeheeyem = new Discord.Client(),
     request = require("request"),
     otherAliases = require('./otherAliases.js');
-    species = require("./dexlist.js");
+    species = require("./dexlist.js").species;
 
 console.log("Starting Not-Beheeyem™...");
 

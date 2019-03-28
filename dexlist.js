@@ -1,4 +1,4 @@
-exports = [
+exports.species = [
 	"abomasnow-f",
 	"abomasnow-mega",
 	"abomasnow",
