@@ -68,7 +68,15 @@ let custom = {
     'skul': 'totodile',
     'swed': 'vaporeon',
     'thirst': 'lilligant',
-    'zytom': 'lurantis'
+    'zytom': 'lurantis',
+    // super custom haha yes
+    "flores": "sceptile",
+    "puppo": "lillipup",
+    "repel": "meditite",
+    "indigo": "zorua",
+    "senshi": "wartortle",
+    "haha": "vulpix-alola",
+    "yes": "vulpix",
 }
 
 exports.aliases = (id) => {
