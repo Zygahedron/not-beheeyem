@@ -127,7 +127,7 @@ function checkItalics(msg) { // Function to be fired if a message is valid for i
             if (pokeCount > 1) break;
             if (pokePast.indexOf(imgPoke) != -1) continue;
             pokePast.push(imgPoke);
-            if (species.indexOf(imgPoke) > -1) pokeCount++;
+            // if (species.indexOf(imgPoke) > -1) pokeCount++;
             if (isShiny) urlBuild = 'https://play.pokemonshowdown.com/sprites/xyani-shiny/';
             /* jshint ignore:start */
             request(urlBuild + imgPoke + ".gif", (err, response) => { // Check to see if the sprite for the desired Pokemon exists
