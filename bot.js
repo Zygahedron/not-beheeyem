@@ -79,7 +79,7 @@ notbeheeyem.on("message", msg => { // Fires when a message is sent that can be d
                 }
             }
         } else*/ if (msg.content == notbeheeyem.user) {
-            msg.react(notbeheeyem.emojis.get('328348788202799109'))
+            msg.react(notbeheeyem.emojis.get('560835223093510146'))
                 .catch(console.error)
         } else { // If a command was fired, do not check for italics in the messsage.
             try {
