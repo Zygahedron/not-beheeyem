@@ -103,15 +103,6 @@ function checkItalics(msg) { // Function to be fired if a message is valid for i
         if (isFound) return;
         for (var i = 1; i < splits[j].length - 1; i++) { // Check each substring between asterixes/underscores
             pokeName = splits[j][i].toLowerCase();
-            if (italics[pokeName]) {
-                if (pokeCount > 1) break;
-                if (pokePast.indexOf(pokeName) != -1) continue;
-                pokePast.push(pokeName);
-                pokeCount++;
-                italics[pokeName].action(msg);
-                isFound = true;
-                continue;
-            }
             let isShiny = false, // Sprite defaults to a non-shiny version
                 urlBuild = 'https://play.pokemonshowdown.com/sprites/xyani/', // Default constructor for a sprite
                 a = otherAliases.aliases(msg.guild.id);
@@ -152,3 +143,7 @@ function checkItalics(msg) { // Function to be fired if a message is valid for i
         }
     }
 }
+
+process.on("beforeExit", ()=>{
+    notbeheeyem.destroy();
+});
