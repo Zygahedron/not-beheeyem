@@ -83,6 +83,7 @@ let custom = {
     "spaghet": "solosis",
     "eehee": "sableye",
     "lego": "archen",
+    "friendburner": "golett",
 }
 
 exports.aliases = (id) => {
