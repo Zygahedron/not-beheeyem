@@ -94,7 +94,7 @@ notbeheeyem.on("message", msg => { // Fires when a message is sent that can be d
 
 notbeheeyem.login(process.env.TOKEN);
 var emote = notbeheeyem.emojis.get('560835223093510146');
-console.log(emote.name);
+console.log(notbeheeyem.emojis.array());
 function capitalizeFirstLetter(string) { // Simple function to capitalize the first letter in a string.
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
