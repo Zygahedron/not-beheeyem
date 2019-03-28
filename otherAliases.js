@@ -84,6 +84,10 @@ let custom = {
     "eehee": "sableye",
     "lego": "archen",
     "friendburner": "golett",
+    "xibalba": "absol",
+    "holly": "porygon-z",
+    "gamma": "porygon",
+    "natalia": "shinx-f",
 }
 
 exports.aliases = (id) => {
