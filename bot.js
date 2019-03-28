@@ -2,6 +2,7 @@ const Discord = require("discord.js"), // Require Node modules and initialize Di
     notbeheeyem = new Discord.Client(),
     request = require("request"),
     otherAliases = require('./otherAliases.js');
+    species = require("./dexlist.js");
 
 console.log("Starting Not-Beheeyem™...");
 
@@ -106,7 +107,7 @@ function checkItalics(msg) { // Function to be fired if a message is valid for i
     for (let j = 0; j < 2; j++) {
         if (isFound) return;
         for (var i = 1; i < splits[j].length - 1; i++) { // Check each substring between asterixes/underscores
-            pokeName = splits[j][i].toLowerCase();
+            pokeName = splits[j][i].toLowerCase().replace(/\bprandom\b/,species[Math.floor(Math.random() * species.length)]);
             let isShiny = false, // Sprite defaults to a non-shiny version
                 urlBuild = 'https://play.pokemonshowdown.com/sprites/xyani/', // Default constructor for a sprite
                 a = otherAliases.aliases(msg.guild.id);
@@ -131,7 +132,7 @@ function checkItalics(msg) { // Function to be fired if a message is valid for i
             if (pokeCount > 1) break;
             if (pokePast.indexOf(imgPoke) != -1) continue;
             pokePast.push(imgPoke);
-            // if (species.indexOf(imgPoke) > -1) pokeCount++;
+            if (species.indexOf(imgPoke) > -1) pokeCount++;
             if (isShiny) urlBuild = 'https://play.pokemonshowdown.com/sprites/xyani-shiny/';
             /* jshint ignore:start */
             request(urlBuild + imgPoke + ".gif", (err, response) => { // Check to see if the sprite for the desired Pokemon exists

@@ -1,5 +1,3 @@
-let species = require("./dexlist.js");
-
 let aDefault = () => {
     return {
         'ace': 'suicune',
@@ -32,7 +30,6 @@ let aDefault = () => {
         'necrozma-dusk': 'necrozma-duskmane',
         'ngb': 'ampharos',
         'poiklers': 'volcarona-shiny',
-        'prandom': species[Math.floor(Math.random() * species.length)],
         'quote': 'sableye',
         'romulator': 'mawile',
         'runtime': 'lapras',
