@@ -54,7 +54,7 @@ let aDefault = () => {
 
 let custom = {
     'blue': 'popplio',
-    'emily': 'luxio',
+    'emily': 'luxio-f',
     'erebus': 'meowstic',
     'flare': 'flareon',
     'hound': 'houndoom',
@@ -77,6 +77,12 @@ let custom = {
     "senshi": "wartortle",
     "haha": "vulpix-alola",
     "yes": "vulpix",
+    "sherbet": "amaura",
+    "liam": "espeon",
+    "clark": "froakie",
+    "spaghet": "solosis",
+    "eehee": "sableye",
+    "lego": "archen",
 }
 
 exports.aliases = (id) => {
