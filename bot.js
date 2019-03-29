@@ -107,7 +107,10 @@ function checkItalics(msg) { // Function to be fired if a message is valid for i
     for (let j = 0; j < 2; j++) {
         if (isFound) return;
         for (var i = 1; i < splits[j].length - 1; i++) { // Check each substring between asterixes/underscores
-            pokeName = splits[j][i].toLowerCase().replace(/\bprandom\b/,species[Math.floor(Math.random() * species.length)]).replace(/\be+\b/,"joltik");
+            pokeName = splits[j][i].toLowerCase()
+                .replace(/\bprandom\b/,species[Math.floor(Math.random() * species.length)])
+                .replace(/\be+\b/,"joltik")
+                .replace(/\ba+\b/,"rowlet");
             let isShiny = false, // Sprite defaults to a non-shiny version
                 urlBuild = 'https://play.pokemonshowdown.com/sprites/xyani/', // Default constructor for a sprite
                 a = otherAliases.aliases(msg.guild.id);
@@ -143,7 +146,7 @@ function checkItalics(msg) { // Function to be fired if a message is valid for i
                     });
                 }, 5000);
             } else if (imgPoke == "furry") {
-                msg.channel.send('',{file: msg.author.displayAvatarURL.replace(/size2048$/,'')});
+                msg.channel.send('',{file: msg.author.displayAvatarURL, name: msg.author.username});
             } else if (imgPoke == "dab") {
                 msg.channel.send('',{file: {attachment: "./kadabra.png"}});
             } else if (imgPoke == "onyxborb") {

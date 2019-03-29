@@ -89,6 +89,7 @@ let custom = {
     "gamma": "porygon",
     "natalia": "shinx-f",
     "frosty frosty": "purrloin",
+    "renne": "shiny chikorita",
 }
 
 exports.aliases = (id) => {
