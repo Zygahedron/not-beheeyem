@@ -112,11 +112,11 @@ function checkItalics(msg) { // Function to be fired if a message is valid for i
                 urlBuild = 'https://play.pokemonshowdown.com/sprites/xyani/', // Default constructor for a sprite
                 a = otherAliases.aliases(msg.guild.id);
             for (let r in a) {
-                if (pokeName.match(new RegExp("\\b"+r+"\\b")) == null) pokeName = pokeName.replace(new RegExp("\\b"+r+"\\b"),a[r]);
-                // if (pokeName.startsWith(r)) pokeName = pokeName.replace(`${r} `, `${a[r]} `);
-                // if (pokeName.endsWith(r)) pokeName = pokeName.replace(` ${r}`, ` ${a[r]}`);
-                // if (pokeName == r) pokeName = a[r];
-                // if (pokeName.indexOf(` ${r} `) > -1) pokeName = pokeName.replace(` ${r} `, ` ${a[r]} `);
+                // if (pokeName.match(new RegExp("\\b"+r+"\\b")) == null) pokeName = pokeName.replace(new RegExp("\\b"+r+"\\b"),a[r]);
+                if (pokeName.startsWith(r)) pokeName = pokeName.replace(`${r} `, `${a[r]} `);
+                if (pokeName.endsWith(r)) pokeName = pokeName.replace(` ${r}`, ` ${a[r]}`);
+                if (pokeName == r) pokeName = a[r];
+                if (pokeName.indexOf(` ${r} `) > -1) pokeName = pokeName.replace(` ${r} `, ` ${a[r]} `);
             }
             if (pokeName.split(" ")[0] == "mega") {
                 pokeName = pokeName.substring(pokeName.split(" ")[0].length + 1) + "-mega";
