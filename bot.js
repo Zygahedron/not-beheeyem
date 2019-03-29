@@ -146,7 +146,7 @@ function checkItalics(msg) { // Function to be fired if a message is valid for i
                     });
                 }, 5000);
             } else if (imgPoke == "furry") {
-                msg.channel.send('',{file: {attachment: msg.author.displayAvatarURL, name: msg.author.username}});
+                msg.channel.send('',{file: {attachment: msg.author.displayAvatarURL, name: msg.author.username + ".png"}});
             } else if (imgPoke == "dab") {
                 msg.channel.send('',{file: {attachment: "./kadabra.png"}});
             } else if (imgPoke == "onyxborb") {
