@@ -146,6 +146,8 @@ function checkItalics(msg) { // Function to be fired if a message is valid for i
                 msg.channel.send('',{file: msg.author.displayAvatarURL.replace(/size2048$/,'')});
             } else if (imgPoke == "dab") {
                 msg.channel.send('',{file: {attachment: "./kadabra.png"}});
+            } else if (imgPoke == "onyxborb") {
+                msg.channel.send('',{file: {attachment: "./Onyxborb.webp"}});
             } else {
                 request(urlBuild + imgPoke + ".gif", (err, response) => { // Check to see if the sprite for the desired Pokemon exists
                     if (!err && response.statusCode == 200) {
