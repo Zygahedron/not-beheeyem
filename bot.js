@@ -7,7 +7,7 @@ const Discord = require("discord.js"), // Require Node modules and initialize Di
 console.log("Starting Not-Beheeyem™...");
 
 notbeheeyem.on("ready", function() {
-    console.log("Beheeyem is active! Currently serving in " + String(notbeheeyem.guilds.size) + " guilds.\n");
+    console.log("Not-Beheeyem™ is active! Currently serving in " + String(notbeheeyem.guilds.size) + " guilds.\n");
     notbeheeyem.user.setActivity(`you on shard 15 bajillion jk lol`, { type: 3 }); //Set "playing" status on the user's profile
 
 
@@ -112,10 +112,11 @@ function checkItalics(msg) { // Function to be fired if a message is valid for i
                 urlBuild = 'https://play.pokemonshowdown.com/sprites/xyani/', // Default constructor for a sprite
                 a = otherAliases.aliases(msg.guild.id);
             for (let r in a) {
-                if (pokeName.startsWith(r)) pokeName = pokeName.replace(`${r} `, `${a[r]} `);
-                if (pokeName.endsWith(r)) pokeName = pokeName.replace(` ${r}`, ` ${a[r]}`);
-                if (pokeName == r) pokeName = a[r];
-                if (pokeName.indexOf(` ${r} `) > -1) pokeName = pokeName.replace(` ${r} `, ` ${a[r]} `);
+                if (pokeName.match(new RegExp("\\b"+r+"\\b")) == null) pokeName = pokeName.replace(new RegExp("\\b"+r+"\\b"),a[r]);
+                // if (pokeName.startsWith(r)) pokeName = pokeName.replace(`${r} `, `${a[r]} `);
+                // if (pokeName.endsWith(r)) pokeName = pokeName.replace(` ${r}`, ` ${a[r]}`);
+                // if (pokeName == r) pokeName = a[r];
+                // if (pokeName.indexOf(` ${r} `) > -1) pokeName = pokeName.replace(` ${r} `, ` ${a[r]} `);
             }
             if (pokeName.split(" ")[0] == "mega") {
                 pokeName = pokeName.substring(pokeName.split(" ")[0].length + 1) + "-mega";
@@ -135,14 +136,26 @@ function checkItalics(msg) { // Function to be fired if a message is valid for i
             if (species.indexOf(imgPoke) > -1) pokeCount++;
             if (isShiny) urlBuild = 'https://play.pokemonshowdown.com/sprites/xyani-shiny/';
             /* jshint ignore:start */
-            request(urlBuild + imgPoke + ".gif", (err, response) => { // Check to see if the sprite for the desired Pokemon exists
-                if (!err && response.statusCode == 200) {
+            if (imgPoke == "slowpoke") {
+                setTimeout(()=>{
                     msg.channel.send('', { // If it does, send it  
-                        file: response.request.href
+                        file: urlBuild + imgPoke + ".gif"
                     });
-                    isFound = true;
-                }
-            });
+                }, 5000);
+            } else if (imgPoke == "furry") {
+                msg.channel.send("you");
+            } else if (imgPoke == "dab") {
+                msg.channel.send('',{file: {attachment: "./kadabra.png"}});
+            } else {
+                request(urlBuild + imgPoke + ".gif", (err, response) => { // Check to see if the sprite for the desired Pokemon exists
+                    if (!err && response.statusCode == 200) {
+                        msg.channel.send('', { // If it does, send it  
+                            file: response.request.href
+                        });
+                        isFound = true;
+                    }
+                });
+            }
             /* jshint ignore:end */
             if (isFound) break;
         }
