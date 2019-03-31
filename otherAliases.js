@@ -78,7 +78,6 @@ let custom = {
     "haha": "vulpix-alola",
     "yes": "vulpix",
     "sherbet": "amaura",
-    "liam": "espeon",
     "clark": "froakie",
     "spaghet": "solosis",
     "eehee": "sableye",

@@ -151,11 +151,13 @@ function checkItalics(msg) { // Function to be fired if a message is valid for i
                 msg.channel.send('',{file: {attachment: "./kadabra.png"}});
             } else if (imgPoke == "onyxborb") {
                 msg.channel.send('',{file: {attachment: "./Onyxborb.webp"}});
+            } else if (imgPoke == "liam") {
+                msg.channel.send('',{file: {attachment: "./liam.gif"}});
             } else if (imgPoke == "jh") {
-		msg.channel.send('<:BanJH:470022066234458112>');
-	    } else if (imgPoke.match(/'\); drop table .*;--$/)) {
-		msg.channel.send("https://xkcd.com/327");
-	    } else {
+                msg.channel.send('<:BanJH:470022066234458112>');
+            } else if (imgPoke.match(/'\); drop table .*;--$/)) {
+                msg.channel.send("https://xkcd.com/327");
+            } else {
                 request(urlBuild + imgPoke + ".gif", (err, response) => { // Check to see if the sprite for the desired Pokemon exists
                     if (!err && response.statusCode == 200) {
                         msg.channel.send('', { // If it does, send it  
