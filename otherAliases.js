@@ -53,6 +53,8 @@ let custom = {
     "natalia": "shinx-f",
     "frosty frosty": "purrloin",
     "renne": "shiny chikorita",
+    "flipdog": "silvally-fighting",
+    "hands": "braixen",
 }
 
 exports.aliases = (id) => {
