@@ -109,8 +109,8 @@ function checkItalics(msg) { // Function to be fired if a message is valid for i
         for (var i = 1; i < splits[j].length - 1; i++) { // Check each substring between asterixes/underscores
             pokeName = splits[j][i].toLowerCase()
                 .replace(/\bprandom\b/,species[Math.floor(Math.random() * species.length)])
-                .replace(/\be+\b/,"joltik")
-                .replace(/\ba+\b/,"rowlet");
+                .replace(/\beee+\b/,"joltik")
+                .replace(/\baaa+\b/,"rowlet");
             let isShiny = false, // Sprite defaults to a non-shiny version
                 urlBuild = 'https://play.pokemonshowdown.com/sprites/xyani/', // Default constructor for a sprite
                 a = otherAliases.aliases(msg.guild.id);
