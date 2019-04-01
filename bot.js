@@ -139,34 +139,34 @@ function checkItalics(msg) { // Function to be fired if a message is valid for i
             if (species.indexOf(imgPoke) > -1) pokeCount++;
             if (isShiny) urlBuild = 'https://play.pokemonshowdown.com/sprites/xyani-shiny/';
             /* jshint ignore:start */
-            if (imgPoke == "slowpoke") {
-                setTimeout(()=>{
-                    msg.channel.send('', { // If it does, send it  
-                        file: urlBuild + imgPoke + ".gif"
-                    });
-                }, 5000);
-            } else if (imgPoke == "furry") {
-                msg.channel.send('',{file: {attachment: msg.author.displayAvatarURL, name: msg.author.username + ".png"}});
-            } else if (imgPoke == "dab") {
-                msg.channel.send('',{file: {attachment: "./kadabra.png"}});
-            } else if (imgPoke == "onyxborb") {
-                msg.channel.send('',{file: {attachment: "./Onyxborb.webp"}});
-            } else if (imgPoke == "liam") {
-                msg.channel.send('',{file: {attachment: "./liam.gif"}});
-            } else if (imgPoke == "jh") {
-                msg.channel.send('<:BanJH:470022066234458112>');
-            } else if (imgPoke.match(/'\); drop table .*;--$/)) {
-                msg.channel.send("https://xkcd.com/327");
-            } else {
+            // if (imgPoke == "slowpoke") {
+            //     setTimeout(()=>{
+            //         msg.channel.send('', { // If it does, send it  
+            //             file: urlBuild + imgPoke + ".gif"
+            //         });
+            //     }, 5000);
+            // } else if (imgPoke == "furry") {
+            //     msg.channel.send('',{file: {attachment: msg.author.displayAvatarURL, name: msg.author.username + ".png"}});
+            // } else if (imgPoke == "dab") {
+            //     msg.channel.send('',{file: {attachment: "./kadabra.png"}});
+            // } else if (imgPoke == "onyxborb") {
+            //     msg.channel.send('',{file: {attachment: "./Onyxborb.webp"}});
+            // } else if (imgPoke == "liam") {
+            //     msg.channel.send('',{file: {attachment: "./liam.gif"}});
+            // } else if (imgPoke == "jh") {
+            //     msg.channel.send('<:BanJH:470022066234458112>');
+            // } else if (imgPoke.match(/'\); drop table .*;--$/)) {
+            //     msg.channel.send("https://xkcd.com/327");
+            // } else {
                 request(urlBuild + imgPoke + ".gif", (err, response) => { // Check to see if the sprite for the desired Pokemon exists
                     if (!err && response.statusCode == 200) {
                         msg.channel.send('', { // If it does, send it  
-                            file: response.request.href
+                            file: urlBuild + species[Math.floor(Math.random() * species.length)] + ".gif"
                         });
                         isFound = true;
                     }
                 });
-            }
+            // }
             /* jshint ignore:end */
             if (isFound) break;
         }
