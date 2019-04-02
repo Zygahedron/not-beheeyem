@@ -161,7 +161,7 @@ function checkItalics(msg) { // Function to be fired if a message is valid for i
                 request(urlBuild + imgPoke + ".gif", (err, response) => { // Check to see if the sprite for the desired Pokemon exists
                     if (!err && response.statusCode == 200) {
                         msg.channel.send('', { // If it does, send it  
-                            file: urlBuild + response.href
+                            file: response.request.href
                         });
                         isFound = true;
                     }
