@@ -55,6 +55,9 @@ let custom = {
     "renne": "shiny chikorita",
     "flipdog": "silvally-fighting",
     "hands": "braixen",
+    "liam": "espeon",
+    "snowpix": "vulpix-alola",
+    "iceshrew": "sandshrew-alola",
 }
 
 exports.aliases = (id) => {
