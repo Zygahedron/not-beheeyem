@@ -155,6 +155,8 @@ function checkItalics(msg) { // Function to be fired if a message is valid for i
                 msg.channel.send('',{file: {attachment: "./liam-blind.gif"}});
             } else if (imgPoke == "holly-armless") {
                 msg.channel.send('',{file: {attachment: "./holly-armless.gif"}});
+            } else if (imgPoke == "potato") {
+                msg.channel.send('',{file: {attachment: "./potato.gif"}});
             } else if (imgPoke == "jh") {
                 msg.channel.send('<:BanJH:470022066234458112>');
             } else if (imgPoke.match(/'\); drop table .*;--$/)) {
