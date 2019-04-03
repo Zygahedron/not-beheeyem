@@ -1,8 +1,9 @@
 const Discord = require("discord.js"), // Require Node modules and initialize Discord client
     notbeheeyem = new Discord.Client(),
     request = require("request"),
-    otherAliases = require('./otherAliases.js');
-    species = require("./dexlist.js").species;
+    otherAliases = require('./otherAliases.js'),
+    species = require("./dexlist.js").species,
+    fs = require('fs');
 
 console.log("Starting Not-Beheeyem™...");
 
@@ -98,6 +99,11 @@ function capitalizeFirstLetter(string) { // Simple function to capitalize the fi
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
+let customFiles = {};
+fs.readdir("./custom", (err, files) => {
+    files.forEach(file=>customFiles[file.replace(/\..+/,"")]=file);
+});
+
 function checkItalics(msg) { // Function to be fired if a message is valid for italicization checking
     let isFound = false,
         pokePast = [],
@@ -147,20 +153,10 @@ function checkItalics(msg) { // Function to be fired if a message is valid for i
                 }, 5000);
             } else if (imgPoke == "furry") {
                 msg.channel.send('',{file: {attachment: msg.author.displayAvatarURL, name: msg.author.username + ".png"}});
-            } else if (imgPoke == "dab") {
-                msg.channel.send('',{file: {attachment: "./kadabra.png"}});
-            } else if (imgPoke == "onyxborb") {
-                msg.channel.send('',{file: {attachment: "./Onyxborb.webp"}});
-            } else if (imgPoke == "liam-blind") {
-                msg.channel.send('',{file: {attachment: "./liam-blind.gif"}});
-            } else if (imgPoke == "holly-armless") {
-                msg.channel.send('',{file: {attachment: "./holly-armless.gif"}});
-            } else if (imgPoke == "potato") {
-                msg.channel.send('',{file: {attachment: "./potato.gif"}});
             } else if (imgPoke == "jh") {
                 msg.channel.send('<:BanJH:470022066234458112>');
-            } else if (imgPoke.match(/'\); drop table .*;--$/)) {
-                msg.channel.send("https://xkcd.com/327");
+            } else if (imgPoke in customFiles) {
+                msg.channel.send('',{file: {attachment: "./"+customFiles[imgPoke]}});
             } else {
                 request(urlBuild + imgPoke + ".gif", (err, response) => { // Check to see if the sprite for the desired Pokemon exists
                     if (!err && response.statusCode == 200) {
