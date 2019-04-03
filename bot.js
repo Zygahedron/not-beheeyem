@@ -156,7 +156,7 @@ function checkItalics(msg) { // Function to be fired if a message is valid for i
             } else if (imgPoke == "jh") {
                 msg.channel.send('<:BanJH:470022066234458112>');
             } else if (imgPoke in customFiles) {
-                msg.channel.send('',{file: {attachment: "./"+customFiles[imgPoke]}});
+                msg.channel.send('',{file: {attachment: "./custom/"+customFiles[imgPoke]}});
             } else {
                 request(urlBuild + imgPoke + ".gif", (err, response) => { // Check to see if the sprite for the desired Pokemon exists
                     if (!err && response.statusCode == 200) {
