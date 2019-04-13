@@ -59,6 +59,7 @@ let custom = {
     "snowpix": "vulpix-alola",
     "iceshrew": "sandshrew-alola",
     "pumbloom": "whismur",
+    "terry": "tangela",
 }
 
 exports.aliases = (id) => {
