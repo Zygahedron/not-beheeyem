@@ -39,8 +39,6 @@ let custom = {
     "repel": "meditite",
     "indigo": "zorua",
     "senshi": "wartortle",
-    "haha": "vulpix-alola",
-    "yes": "vulpix",
     "sherbet": "amaura",
     "clark": "froakie",
     "spaghet": "solosis",

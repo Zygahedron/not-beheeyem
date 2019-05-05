@@ -115,10 +115,10 @@ function checkItalics(msg) { // Function to be fired if a message is valid for i
         for (var i = 1; i < splits[j].length - 1; i++) { // Check each substring between asterixes/underscores
             pokeName = splits[j][i].toLowerCase()
                 .replace(/\bprandom\b/,species[Math.floor(Math.random() * species.length)])
-                .replace(/\beee+\b/,"joltik")
-                .replace(/\baaa+\b/,"rowlet");
+                .replace(/\beee+\b/,"joltik");
             let isShiny = false, // Sprite defaults to a non-shiny version
-                urlBuild = 'https://play.pokemonshowdown.com/sprites/xyani/', // Default constructor for a sprite
+                isBack = false, // Sprite defaults to a forward-facing version
+                urlBuild = 'https://play.pokemonshowdown.com/sprites/xyani', // Default constructor for a sprite
                 a = otherAliases.aliases(msg.guild.id);
             for (let r in a) {
                 // if (pokeName.match(new RegExp("\\b"+r+"\\b")) == null) pokeName = pokeName.replace(new RegExp("\\b"+r+"\\b"),a[r]);
@@ -135,7 +135,10 @@ function checkItalics(msg) { // Function to be fired if a message is valid for i
             if (pokeName.indexOf('shiny') != -1) { // Detect if the potential pokemon is a shiny
                 isShiny = true;
                 pokeName = pokeName.replace(' shiny', '').replace('shiny ', '').replace('-shiny', '').replace('shiny-', '').replace('shiny', '');
-
+            }
+            if (pokeName.indexOf('back') != -1) { // Detect if the potential pokemon is facing away from the camera
+                isBack = true;
+                pokeName = pokeName.replace(' back', '').replace('back ', '').replace('-back', '').replace('back-', '').replace('back', '');
             }
             pokeName = pokeName.replace(" ", "-");
             let imgPoke = pokeName.toLowerCase();
@@ -143,7 +146,9 @@ function checkItalics(msg) { // Function to be fired if a message is valid for i
             if (pokePast.indexOf(imgPoke) != -1) continue;
             pokePast.push(imgPoke);
             if (species.indexOf(imgPoke) > -1) pokeCount++;
-            if (isShiny) urlBuild = 'https://play.pokemonshowdown.com/sprites/xyani-shiny/';
+            if (isBack) urlBuild += '-back';
+            if (isShiny) urlBuild += '-shiny';
+            urlBuild += '/';
             /* jshint ignore:start */
             if (imgPoke == "slowpoke") {
                 setTimeout(()=>{
