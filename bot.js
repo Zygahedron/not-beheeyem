@@ -139,6 +139,7 @@ function checkItalics(msg) { // Function to be fired if a message is valid for i
             if (pokeName.indexOf('back') != -1) { // Detect if the potential pokemon is facing away from the camera
                 isBack = true;
                 pokeName = pokeName.replace(' back', '').replace('back ', '').replace('-back', '').replace('back-', '').replace('back', '');
+                pokeName = pokeName.replace("porygon-z","porygonz");
             }
             pokeName = pokeName.replace(" ", "-");
             let imgPoke = pokeName.toLowerCase();
