@@ -58,6 +58,7 @@ let custom = {
     "iceshrew": "sandshrew-alola",
     "pumbloom": "whismur",
     "terry": "tangela",
+    "dlc": "foongus",
 }
 
 exports.aliases = (id) => {
