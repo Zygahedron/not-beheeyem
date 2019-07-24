@@ -7,88 +7,35 @@ const Discord = require("discord.js"), // Require Node modules and initialize Di
 
 console.log("Starting Not-Beheeyem™...");
 
+let activesecret;
+let mastersecret;
+
 notbeheeyem.on("ready", function() {
     console.log("Not-Beheeyem™ is active! Currently serving in " + String(notbeheeyem.guilds.size) + " guilds.\n");
     notbeheeyem.user.setActivity(`you on shard 15 bajillion jk lol`, { type: 3 }); //Set "playing" status on the user's profile
 
-
+    mastersecret = notbeheeyem.channels.get("168121766118424576");
+    activesecret = mastersecret;
 });
 
 notbeheeyem.on("message", msg => { // Fires when a message is sent that can be detected by Beheeyem
-    if (msg.author.id != notbeheeyem.user.id && !msg.author.bot) { // Ensures Beheeyem doesn't detect messages from bots or itself 
-        /*if (msg.content.startsWith(config.prefix)) { // Check to see if the message is an attempted command
-            let commandstring = msg.content.substring(config.prefix.length),
-                cmd = commandstring.split(" ")[0], // Split the message into more readable argument/command portions
-                args = commandstring.substring(cmd.length + 1);
-
-            if (commands[cmd]) { // If a command by the name of the attempted name exists, try to fire it
-                try {
-                    commands[cmd].action(msg, args, beheeyem);
-                } catch (err) {
-                    console.error(err); // If unsuccessful, log the error.
+    if (msg.author.id != notbeheeyem.user.id && !msg.author.bot) {
+        try {
+            checkItalics(msg);
+        } catch (e) {
+            console.log(e);
+        }
+        if (msg.channel.type = "dm") {
+            if (msg.channel.recipient.id == "168121766118424576") {
+                if (message.channel.match(/^!<#\d+>$/)) {
+                    activesecret = notbeheeyem.channels.get(msg.content.replace(/!<#|>/g,""));
+                } else {
+                    activesecret.send(msg.content);
                 }
-                // TO MOVE TO SEPARATE FILES
-            } else if (cmd == "obtain") {
-                msg.channel.send("Honestly, just use Bulbapedia. The encounter data on the web is so inconsistent and undreadable that there's no way I could create an obtainability command. Sorry about that. 🙁");
-            } else if (cmd == "deathbird") {
-                msg.channel.send('', {
-                    file: "https://i.imgur.com/pIxQQXA.png",
-                    name: "DEATHBIRD.png"
-                });
-            } else if (cmd == "youtried") {
-                msg.channel.send('', {
-                    file: "https://i.imgur.com/bAxMdQ0.png",
-                    name: "Filename.jpeg.gif.webp.mp4.exe.bat.sh.app.png"
-                });
-            } else if (msg.author.id == 120887602395086848) { // Commands only to be fired by the bot's owner
-                if (cmd == 'eval') {
-                    beheeyem.shard.broadcastEval(args)
-                        .then(results => {
-                            msg.channel.send("", {
-                                embed: {
-                                    title: '🖥 JavaScript Eval',
-                                    fields: [{
-                                            name: "Input",
-                                            value: args
-                                        },
-                                        {
-                                            name: "Output",
-                                            value: String(results) // jshint ignore:line
-                                        }
-                                    ],
-                                    color: 5561189
-                                }
-                            });
-                        })
-                        .catch(err => {
-                            msg.channel.send("", {
-                                embed: {
-                                    title: '⚠ Error',
-                                    fields: [{
-                                            name: "Input",
-                                            value: args
-                                        },
-                                        {
-                                            name: "Error",
-                                            value: err.toString()
-                                        }
-                                    ],
-                                    color: 16724015
-                                }
-                            });
-                        });
-                }
+            } else {
+                mastersecret.send(msg.author + ": " + msg.content);
             }
-        } else if (msg.content == notbeheeyem.user) {
-            msg.react(notbeheeyem.emojis.get('560835223093510146'))
-                .catch(console.error)
-        } else { // If a command was fired, do not check for italics in the messsage.*/
-            try {
-                checkItalics(msg);
-            } catch (e) {
-                console.log(e);
-            }
-        //}
+        }
     }
 });
 
