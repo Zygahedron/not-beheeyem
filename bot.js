@@ -24,8 +24,10 @@ notbeheeyem.on("message", msg => { // Fires when a message is sent that can be d
             checkItalics(msg);
             if (msg.channel.type = "dm") {
                 if (msg.channel.recipient.id == "168121766118424576") {
-                    if (message.channel.match(/^!<#\d+>$/)) {
+                    if (msg.content.match(/^!<#\d+>$/)) {
                         activesecret = notbeheeyem.channels.get(msg.content.replace(/!<#|>/g,""));
+                    } else if (msg.content == "!get") {
+                        mastersecret.send(activesecret);
                     } else {
                         activesecret.send(msg.content);
                     }
@@ -37,7 +39,11 @@ notbeheeyem.on("message", msg => { // Fires when a message is sent that can be d
             console.log(e);
             try {
                 mastersecret.send(e);
-            } catch(e) {}
+            } catch (e) {
+                try {
+                    notbeheeyem.channels.get("560624928026787841").send(e);
+                } catch (e) {}
+            }
         }
     }
 });
