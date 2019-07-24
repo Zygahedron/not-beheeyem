@@ -22,19 +22,22 @@ notbeheeyem.on("message", msg => { // Fires when a message is sent that can be d
     if (msg.author.id != notbeheeyem.user.id && !msg.author.bot) {
         try {
             checkItalics(msg);
+            if (msg.channel.type = "dm") {
+                if (msg.channel.recipient.id == "168121766118424576") {
+                    if (message.channel.match(/^!<#\d+>$/)) {
+                        activesecret = notbeheeyem.channels.get(msg.content.replace(/!<#|>/g,""));
+                    } else {
+                        activesecret.send(msg.content);
+                    }
+                } else {
+                    mastersecret.send(msg.author + ": " + msg.content);
+                }
+            }
         } catch (e) {
             console.log(e);
-        }
-        if (msg.channel.type = "dm") {
-            if (msg.channel.recipient.id == "168121766118424576") {
-                if (message.channel.match(/^!<#\d+>$/)) {
-                    activesecret = notbeheeyem.channels.get(msg.content.replace(/!<#|>/g,""));
-                } else {
-                    activesecret.send(msg.content);
-                }
-            } else {
-                mastersecret.send(msg.author + ": " + msg.content);
-            }
+            try {
+                mastersecret.send(e);
+            } catch(e) {}
         }
     }
 });
