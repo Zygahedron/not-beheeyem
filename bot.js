@@ -9,6 +9,7 @@ console.log("Starting Not-Beheeyem™...");
 
 let activesecret;
 let mastersecret;
+let gottensecret;
 
 notbeheeyem.on("ready", function() {
     console.log("Not-Beheeyem™ is active! Currently serving in " + String(notbeheeyem.guilds.size) + " guilds.\n");
@@ -17,6 +18,7 @@ notbeheeyem.on("ready", function() {
     notbeheeyem.users.get("168121766118424576").createDM().then(dm => {
         mastersecret = dm;
         activesecret = mastersecret;
+        gottensecret = mastersecret;
     }).catch(err);
 });
 
@@ -39,13 +41,23 @@ notbeheeyem.on("message", msg => { // Fires when a message is sent that can be d
                 if (msg.channel.recipient.id == "168121766118424576") {
                     if (msg.content.match(/^!<#\d+>$/)) {
                         activesecret = notbeheeyem.channels.get(msg.content.replace(/!<#|>/g,""));
+                    } else if (msg.content.match(/^!<!?@\d+>$/)) {
+                        activesecret = notbeheeyem.channels.get(msg.content.replace(/!<#|>/g,""));
+                        notbeheeyem.users.get(msg.content.replace(/!<@|>/g,"")).createDM().then(dm => {
+                            activesecret = dm;
+                        }).catch(err);
                     } else if (msg.content == "!get") {
                         mastersecret.send(activesecret.type == "dm" ? `<@${activesecret.recipient.id}>` : `<#${activesecret.id}>`).catch(err);
+                    } else if (msg.content == "!reply") {
+                        activesecret = gottensecret;
+                    } else if (msg.content[0] == "!" && msg.content.length > 1) {
+                        mastersecret.send(">what");
                     } else {
                         activesecret.send(msg.content).catch(err);
                     }
                 } else {
                     mastersecret.send(msg.author + ": " + msg.content).catch(err);
+                    gottensecret = msg.channel
                 }
             }
         } catch (e) {
