@@ -40,7 +40,7 @@ notbeheeyem.on("message", msg => { // Fires when a message is sent that can be d
                     if (msg.content.match(/^!<#\d+>$/)) {
                         activesecret = notbeheeyem.channels.get(msg.content.replace(/!<#|>/g,""));
                     } else if (msg.content == "!get") {
-                        mastersecret.send(activesecret).catch(err);
+                        mastersecret.send(activesecret.type == "dm" ? `<@${activesecret.recipient.id}>` : `<#${activesecret.id}>`).catch(err);
                     } else {
                         activesecret.send(msg.content).catch(err);
                     }
