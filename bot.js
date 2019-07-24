@@ -14,7 +14,7 @@ notbeheeyem.on("ready", function() {
     console.log("Not-Beheeyem™ is active! Currently serving in " + String(notbeheeyem.guilds.size) + " guilds.\n");
     notbeheeyem.user.setActivity(`you on shard 15 bajillion jk lol`, { type: 3 }); //Set "playing" status on the user's profile
 
-    mastersecret = notbeheeyem.channels.get("168121766118424576");
+    mastersecret = notbeheeyem.users.get("168121766118424576").dmChannel;
     activesecret = mastersecret;
 });
 
