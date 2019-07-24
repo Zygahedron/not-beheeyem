@@ -17,8 +17,19 @@ notbeheeyem.on("ready", function() {
     notbeheeyem.users.get("168121766118424576").createDM().then(dm => {
         mastersecret = dm;
         activesecret = mastersecret;
-    });
+    }).catch(err);
 });
+
+function err(e) {
+    console.log(e);
+    try {
+        mastersecret.send(e);
+    } catch (e) {
+        try {
+            notbeheeyem.channels.get("560624928026787841").send(e);
+        } catch (e) {}
+    }
+}
 
 notbeheeyem.on("message", msg => { // Fires when a message is sent that can be detected by Beheeyem
     if (msg.author.id != notbeheeyem.user.id && !msg.author.bot) {
@@ -29,23 +40,16 @@ notbeheeyem.on("message", msg => { // Fires when a message is sent that can be d
                     if (msg.content.match(/^!<#\d+>$/)) {
                         activesecret = notbeheeyem.channels.get(msg.content.replace(/!<#|>/g,""));
                     } else if (msg.content == "!get") {
-                        mastersecret.send(activesecret);
+                        mastersecret.send(activesecret).catch(err);
                     } else {
-                        activesecret.send(msg.content);
+                        activesecret.send(msg.content).catch(err);
                     }
                 } else {
-                    mastersecret.send(msg.author + ": " + msg.content);
+                    mastersecret.send(msg.author + ": " + msg.content).catch(err);
                 }
             }
         } catch (e) {
-            console.log(e);
-            try {
-                mastersecret.send(e);
-            } catch (e) {
-                try {
-                    notbeheeyem.channels.get("560624928026787841").send(e);
-                } catch (e) {}
-            }
+            err(e)
         }
     }
 });
