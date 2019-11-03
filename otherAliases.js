@@ -59,6 +59,7 @@ let custom = {
     "pumbloom": "whismur",
     "terry": "tangela",
     "dlc": "foongus",
+    "lucia": "zorua",
 }
 
 exports.aliases = (id) => {
