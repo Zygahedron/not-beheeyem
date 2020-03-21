@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const Discord = require("discord.js"), // Require Node modules and initialize Discord client
     notbeheeyem = new Discord.Client(),
     request = require("request"),
